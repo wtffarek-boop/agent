@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Agent — Your AI teammate that actually ships</title>
+<meta name="description" content="Agent plans, writes, and reviews code with you. Bring your repo, get a working pull request." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%236d5efc'/><path d='M9 22 16 9l7 13' stroke='white' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="aurora" aria-hidden="true">
+    <span class="blob blob-a"></span>
+    <span class="blob blob-b"></span>
+    <span class="blob blob-c"></span>
+  </div>
+
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a class="brand" href="#top" aria-label="Agent home">
+        <svg viewBox="0 0 32 32" width="26" height="26" aria-hidden="true">
+          <rect width="32" height="32" rx="9" fill="url(#bg)" />
+          <defs>
+            <linearGradient id="bg" x1="0" y1="0" x2="32" y2="32">
+              <stop stop-color="#8b7cff" /><stop offset="1" stop-color="#4d3df0" />
+            </linearGradient>
+          </defs>
+          <path d="M9 22 16 9l7 13" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        <span>Agent</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#features">Features</a>
+        <a href="#how">How it works</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <div class="nav-cta">
+        <a class="link-quiet" href="#pricing">Sign in</a>
+        <a class="btn btn-sm btn-primary" href="#cta">Get started</a>
+      </div>
+
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
+        <span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu" hidden>
+      <a href="#features">Features</a>
+      <a href="#how">How it works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn btn-primary" href="#cta">Get started</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <a class="pill" href="#features">
+            <span class="dot"></span>
+            Now with multi-file refactors
+            <span class="pill-arrow" aria-hidden="true">→</span>
+          </a>
+
+          <h1>
+            Your AI teammate
+            <span class="serif">that actually ships.</span>
+          </h1>
+
+          <p class="lede">
+            Point Agent at your repository. It reads the code, plans the change,
+            writes the diff, and opens a pull request — with tests included.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#cta">
+              Start building free
+              <svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a class="btn btn-ghost" href="#how">See how it works</a>
+          </div>
+
+          <p class="fineprint">No credit card · Works with GitHub, GitLab &amp; Bitbucket</p>
+        </div>
+
+        <div class="hero-visual reveal">
+          <div class="mock-glow" aria-hidden="true"></div>
+          <div class="mock">
+            <div class="mock-bar">
+              <span class="lights"><i></i><i></i><i></i></span>
+              <span class="mock-title">agent · fix/rate-limit</span>
+            </div>
+            <div class="mock-body">
+              <div class="msg user">
+                <div class="avatar you">Y</div>
+                <div class="bubble">Login is hammering the rate limiter and tests are flaky. Can you fix it?</div>
+              </div>
+              <div class="msg agent">
+                <div class="avatar bot" aria-hidden="true">
+                  <svg viewBox="0 0 32 32" width="22" height="22"><path d="M9 22 16 9l7 13" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="bubble">
+                  <p>Found it — <code>LoginForm</code> retries on every keystroke. Here's the plan:</p>
+                  <ol class="steps">
+                    <li><span class="tick">✓</span> Debounce validation 300 ms</li>
+                    <li><span class="tick">✓</span> Add retry backoff with jitter</li>
+                    <li><span class="tick">✓</span> Cover with 4 tests</li>
+                  </ol>
+                  <div class="diff">
+                    <div class="diff-line del">- retries = 5</div>
+                    <div class="diff-line add">+ retries = 1, backoff = jitter(500)</div>
+                  </div>
+                  <div class="pr">
+                    <span class="pr-icon" aria-hidden="true">⑂</span>
+                    Pull request #481 opened
+                    <span class="pr-state">All checks passed</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <form class="mock-input" id="mockForm" autocomplete="off">
+              <span class="prompt-caret" aria-hidden="true">›</span>
+              <input id="mockPrompt" type="text" placeholder="Ask Agent to build something…" aria-label="Ask Agent a question" />
+              <button type="submit" class="send" aria-label="Send">
+                <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="wrap logos reveal">
+        <span class="logos-label">Trusted by teams at</span>
+        <div class="logo-row" aria-label="Customer logos">
+          <span>Northwind</span><span>Helix</span><span>Fathom</span><span>Loupe</span><span>Ridgeline</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="section" id="features">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="eyebrow">Capabilities</span>
+          <h2>Less prompting. <span class="serif">More merging.</span></h2>
+          <p>Agent works inside your repo the way a senior engineer would — carefully, with context, and with a paper trail.</p>
+        </div>
+
+        <div class="cards">
+          <article class="card reveal">
+            <div class="card-icon">🗺️</div>
+            <h3>Plans before it types</h3>
+            <p>Every task starts with a written plan you can edit. Nothing touches your code until you approve the approach.</p>
+          </article>
+          <article class="card reveal">
+            <div class="card-icon">🧠</div>
+            <h3>Whole-repo context</h3>
+            <p>Semantic indexing across files, tests, and history. It knows where the bug lives before you finish describing it.</p>
+          </article>
+          <article class="card reveal">
+            <div class="card-icon">🧪</div>
+            <h3>Tests come standard</h3>
+            <p>Changes land with coverage. Agent runs your suite in a sandbox and won't open a PR on red.</p>
+          </article>
+          <article class="card reveal">
+            <div class="card-icon">🔍</div>
+            <h3>Reviews like a human</h3>
+            <p>Incremental review comments on your diffs — catching null paths, N+1s, and forgotten migrations.</p>
+          </article>
+          <article class="card reveal">
+            <div class="card-icon">🔐</div>
+            <h3>Your code stays yours</h3>
+            <p>Zero retention on prompts and code. SOC 2 Type II, SSO, and self-hosted runners for regulated teams.</p>
+          </article>
+          <article class="card reveal">
+            <div class="card-icon">⚡</div>
+            <h3>Parallel by default</h3>
+            <p>Spin up five agents on five branches. They coordinate so you never resolve the same merge conflict twice.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="section section-alt" id="how">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="eyebrow">Workflow</span>
+          <h2>Three steps to a <span class="serif">green build.</span></h2>
+        </div>
+
+        <ol class="steps-grid">
+          <li class="step reveal">
+            <span class="step-num">01</span>
+            <h3>Connect the repo</h3>
+            <p>Install the app on GitHub or GitLab. Agent indexes your codebase in under a minute — no config files required.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step-num">02</span>
+            <h3>Describe the change</h3>
+            <p>Write it like a ticket. Agent replies with a plan, the files it will touch, and how long it expects to take.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step-num">03</span>
+            <h3>Review the pull request</h3>
+            <p>Read a clean diff with tests attached. Merge when you're happy, or push back and Agent iterates.</p>
+          </li>
+        </ol>
+
+        <div class="stat-band reveal">
+          <div><strong>3.4×</strong><span>faster from ticket to merge</span></div>
+          <div><strong>81%</strong><span>of PRs merge without edits</span></div>
+          <div><strong>40k+</strong><span>repositories indexed</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="section" id="pricing">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="eyebrow">Pricing</span>
+          <h2>Simple plans, <span class="serif">no surprise tokens.</span></h2>
+          <p>Every plan includes unlimited repositories. Cancel anytime.</p>
+        </div>
+
+        <div class="billing-toggle reveal" role="group" aria-label="Billing period">
+          <button class="toggle-btn is-active" data-billing="monthly" aria-pressed="true">Monthly</button>
+          <button class="toggle-btn" data-billing="yearly" aria-pressed="false">Yearly <em>−20%</em></button>
+        </div>
+
+        <div class="plans">
+          <article class="plan reveal">
+            <h3>Hobby</h3>
+            <p class="plan-desc">For side projects and learning.</p>
+            <p class="price"><span class="amount" data-monthly="0" data-yearly="0">$0</span><span class="per">/forever</span></p>
+            <ul>
+              <li>1 workspace</li>
+              <li>150 agent minutes / month</li>
+              <li>Public repositories</li>
+              <li>Community support</li>
+            </ul>
+            <a class="btn btn-ghost btn-block" href="#cta">Start free</a>
+          </article>
+
+          <article class="plan plan-featured reveal">
+            <span class="badge">Most popular</span>
+            <h3>Team</h3>
+            <p class="plan-desc">For product teams shipping weekly.</p>
+            <p class="price"><span class="amount" data-monthly="24" data-yearly="19">$24</span><span class="per">/user / month</span></p>
+            <ul>
+              <li>Unlimited workspaces</li>
+              <li>4,000 agent minutes / user</li>
+              <li>Private repos &amp; parallel agents</li>
+              <li>Automated code review</li>
+              <li>Priority support</li>
+            </ul>
+            <a class="btn btn-primary btn-block" href="#cta">Start 14-day trial</a>
+          </article>
+
+          <article class="plan reveal">
+            <h3>Enterprise</h3>
+            <p class="plan-desc">For regulated, larger orgs.</p>
+            <p class="price"><span class="amount">Custom</span></p>
+            <ul>
+              <li>Self-hosted or VPC runners</li>
+              <li>SAML SSO &amp; audit logs</li>
+              <li>Zero data retention</li>
+              <li>Dedicated solutions engineer</li>
+            </ul>
+            <a class="btn btn-ghost btn-block" href="#cta">Talk to sales</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section-alt" id="faq">
+      <div class="wrap narrow">
+        <div class="section-head reveal">
+          <span class="eyebrow">FAQ</span>
+          <h2>Questions, <span class="serif">answered.</span></h2>
+        </div>
+
+        <div class="faq-list">
+          <details class="faq reveal">
+            <summary>Does Agent push directly to main?</summary>
+            <p>Never. Agent always works on a branch and opens a pull request. Protected-branch rules and required reviewers apply exactly as they do for your team.</p>
+          </details>
+          <details class="faq reveal">
+            <summary>Which languages does it support?</summary>
+            <p>First-class support for TypeScript, Python, Go, Java, Rust, Ruby, and C#. Anything else works too, just with less deep static analysis.</p>
+          </details>
+          <details class="faq reveal">
+            <summary>Is my code used for training?</summary>
+            <p>No. Your code and prompts are never used to train models, and we support zero-retention agreements on Team and Enterprise plans.</p>
+          </details>
+          <details class="faq reveal">
+            <summary>Can I self-host?</summary>
+            <p>Yes — Enterprise customers can run Agent inside their own VPC or on-prem, with runners that never leave your network.</p>
+          </details>
+          <details class="faq reveal">
+            <summary>What happens when I hit my minutes?</summary>
+            <p>Agent pauses new tasks and tells you. You can top up from the dashboard or upgrade — running tasks are never killed mid-PR.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section cta-section" id="cta">
+      <div class="wrap">
+        <div class="cta-card reveal">
+          <h2>Ship your next feature <span class="serif">before standup.</span></h2>
+          <p>Free for public repos. Two minutes to connect. No credit card.</p>
+          <form class="cta-form" id="ctaForm" novalidate>
+            <label class="sr-only" for="email">Work email</label>
+            <input id="email" name="email" type="email" placeholder="you@company.com" required />
+            <button class="btn btn-primary" type="submit">Get started</button>
+          </form>
+          <p class="form-note" id="formNote" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <div class="footer-brand">
+        <a class="brand" href="#top">
+          <svg viewBox="0 0 32 32" width="24" height="24" aria-hidden="true">
+            <rect width="32" height="32" rx="9" fill="url(#bg2)" />
+            <defs><linearGradient id="bg2" x1="0" y1="0" x2="32" y2="32"><stop stop-color="#8b7cff"/><stop offset="1" stop-color="#4d3df0"/></linearGradient></defs>
+            <path d="M9 22 16 9l7 13" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <span>Agent</span>
+        </a>
+        <p>The AI teammate for engineering teams that ship.</p>
+      </div>
+      <div class="footer-cols">
+        <div>
+          <h4>Product</h4>
+          <a href="#features">Features</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#how">Changelog</a>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <a href="#faq">About</a>
+          <a href="#cta">Careers</a>
+          <a href="#cta">Contact</a>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <a href="#faq">Privacy</a>
+          <a href="#faq">Terms</a>
+          <a href="#faq">Security</a>
+        </div>
+      </div>
+    </div>
+    <div class="wrap footer-bottom">
+      <span>© <span id="year">2026</span> Agent Labs, Inc.</span>
+      <span class="status"><i></i> All systems operational</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
